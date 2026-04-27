@@ -19,6 +19,6 @@ All designed to help you confidently use AI in everyday work.
 
 Each task from the challenge lives in its own folder:
 
-- [Task 1 : The Clone Wars](Task%201%20%3A%20The%20Clone%20Wars/)
+- [Task 1 - The Clone Wars](Task%201%20-%20The%20Clone%20Wars/)
 
 Additional tasks will be added as the sprint progresses.

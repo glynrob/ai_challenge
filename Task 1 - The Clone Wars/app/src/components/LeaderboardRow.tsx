@@ -43,12 +43,17 @@ export function LeaderboardRow({ entry }: Props) {
             {categoryItems.map((c) => (
               <div
                 key={c}
-                className="flex flex-col items-center text-accent"
-                title={c}
+                className="relative group flex flex-col items-center text-accent"
               >
                 <CategoryIcon category={c} className="w-5 h-5" />
                 <span className="text-xs font-medium text-slate-500 mt-0.5">
                   {categoryCounts[c]}
+                </span>
+                <span
+                  role="tooltip"
+                  className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 rounded bg-[#f8fafc] text-[#0f172a] border border-slate-200 shadow-sm text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                >
+                  {c}
                 </span>
               </div>
             ))}

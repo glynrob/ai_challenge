@@ -15,14 +15,17 @@ function rankBadgeColor(rank: number) {
 
 function ringColor(rank: number) {
   if (rank === 1) return 'ring-medal-gold';
-  if (rank === 2) return 'ring-medal-silver';
-  return 'ring-medal-bronze';
+  return 'ring-white';
 }
 
 function blockColor(rank: number) {
-  if (rank === 1) return 'bg-medal-gold-soft';
-  if (rank === 2) return 'bg-medal-silver-soft';
-  return 'bg-medal-bronze-soft';
+  if (rank === 1) return 'bg-gradient-to-b from-medal-gold-soft to-white';
+  return 'bg-gradient-to-b from-slate-200 to-white';
+}
+
+function blockNumberColor(rank: number) {
+  if (rank === 1) return 'text-amber-300/70';
+  return 'text-slate-300';
 }
 
 function blockHeight(rank: number) {
@@ -52,7 +55,7 @@ function PodiumSlot({ entry }: { entry: RankedUser }) {
           className={`${avatarSize(rank)} rounded-full bg-white object-cover ring-4 ${ringColor(rank)}`}
         />
         <span
-          className={`${rankBadgeColor(rank)} absolute -bottom-1 right-0 w-7 h-7 rounded-full text-white font-semibold flex items-center justify-center text-sm shadow`}
+          className={`${rankBadgeColor(rank)} absolute -bottom-1 right-0 w-7 h-7 rounded-full text-white font-semibold flex items-center justify-center text-sm shadow border-2 border-white`}
         >
           {rank}
         </span>
@@ -76,7 +79,7 @@ function PodiumSlot({ entry }: { entry: RankedUser }) {
         {total}
       </div>
       <div
-        className={`${blockColor(rank)} ${blockHeight(rank)} w-full mt-3 rounded-t-lg flex items-center justify-center text-5xl font-bold text-white/40`}
+        className={`${blockColor(rank)} ${blockHeight(rank)} ${blockNumberColor(rank)} w-full mt-3 rounded-t-lg flex items-center justify-center text-8xl font-bold`}
       >
         {rank}
       </div>

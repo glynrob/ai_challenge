@@ -6,7 +6,16 @@
 
 ## What I built
 
-A static React app that visually and functionally clones the company leaderboard shown in the reference screenshots. All 227 records are synthesized — no real names, titles, or department codes from the original.
+A static React app that visually and functionally clones the company internal wiki leaderboard. All 227 records are synthesized — no real names, titles, or department codes from the original.
+
+## Process
+
+I built this with Claude Code (Anthropic's CLI for Claude, running Opus 4.7) and deliberately led with planning rather than code. Concretely:
+
+- **`/superpowers:brainstorming` skill** — used at the very start to drive a structured back-and-forth before any file was created. The skill enforces "design before code": ask one focused question at a time, propose 2–3 approaches with tradeoffs, present the design in sections, and only proceed once each section is explicitly approved. That conversation is what locked down the load-bearing decisions: how filters re-rank totals, what data theme to use (generic plausible-corporate, not a Star Wars theme as the folder name might suggest), the exact category list (Education / University Partnership / Public Speaking — confirmed from a hover tooltip you sent), the avatar strategy (DiceBear baked into the build vs. fetched at runtime), and the repo layout (app code in a `app/` subfolder under the task folder, deploy via GitHub Actions).
+- **Plan mode + Plan subagent** — once requirements were clear, I had a Plan subagent produce an opinionated architecture critique covering TypeScript vs. JS, Tailwind vs. CSS Modules, GH Actions vs. `gh-pages`, build-time vs. commit-once data generation, and the subtle UI behaviours I might have missed. That critique fed straight into the written plan committed via Claude Code's `ExitPlanMode` approval gate.
+- **`AskUserQuestion`** — used throughout brainstorming to present multiple-choice decisions (with previews where useful) rather than open-ended prompts, which kept iteration fast.
+- **Auto mode for execution** — once the plan was approved, the implementation ran autonomously: scaffold Vite, install Tailwind v4, write the data contract, generate 227 users + 227 DiceBear SVGs, build the components, verify the production build, push to GitHub Actions.
 
 ## Tools and techniques
 
